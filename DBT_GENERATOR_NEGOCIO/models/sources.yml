@@ -1,0 +1,266 @@
+version: 2
+
+sources:
+  - name: bronze_coopecarn
+    database: "{{ 'PROD_BRONZE' if target.name == 'prod' else 'DEV_BRONZE' }}"
+    schema: BRONZE_COOPECARN
+    quoting:
+      database: false
+      schema: false
+      identifier: true
+    tables:
+      - name: COOPECARN_CUSTOMER
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_CUSTOMER'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_CUSTOMER_CLASSIFICATION
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_CUSTOMER_CLASSIFICATION'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_INCIDENCE_QUALITY_HEADER
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_INCIDENCE_QUALITY_HEADER'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_ITEM
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_ITEM'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_ITEM_CATEGORY
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_ITEM_CATEGORY'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_ITEM_CLASSIFICATION
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_ITEM_CLASSIFICATION'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_ITEM_UNIT_OF_MEASURE
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_ITEM_UNIT_OF_MEASURE'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_ITEM_VARIANT
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_ITEM_VARIANT'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_PRESENTATION
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_PRESENTATION'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_QUALITY_ACTION_TYPE
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_QUALITY_ACTION_TYPE'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_SALESPERSON_PURCHASER
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_SALESPERSON_PURCHASER'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_SALES_HEADER
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_SALES_HEADER'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_SALES_INVOICE_HEADER
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_SALES_INVOICE_HEADER'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_SALES_INVOICE_LINE
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_SALES_INVOICE_LINE'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_SALES_LINE
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_SALES_LINE'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_SALES_SHIPMENT_LINE
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_SALES_SHIPMENT_LINE'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_SHIPPING_AGENT
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_SHIPPING_AGENT'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_SHIP_TO_ADDRESS
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_SHIP_TO_ADDRESS'
+        loaded_at_field: tec_ts_staging
+      - name: COOPECARN_TARIFF_NUMBER
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.COOPECARN_TARIFF_NUMBER'
+        loaded_at_field: tec_ts_staging
+      - name: V_ETL_PRESUPUESTO_COOPECARN
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_COOPECARN.V_ETL_PRESUPUESTO_COOPECARN'
+        loaded_at_field: tec_ts_staging
+  - name: bronze_delisano
+    database: "{{ 'PROD_BRONZE' if target.name == 'prod' else 'DEV_BRONZE' }}"
+    schema: BRONZE_DELISANO
+    quoting:
+      database: false
+      schema: false
+      identifier: true
+    tables:
+      - name: LOG_REPLICACION
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.LOG_REPLICACION'
+        loaded_at_field: tec_ts_staging
+      - name: RAW_GC_DP_PRESSUPOST
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.RAW_GC_DP_PRESSUPOST'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_ATTRIBUTES
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_ATTRIBUTES'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_CATEGORIAS_GC
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_CATEGORIAS_GC'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_CLIENTES
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_CLIENTES'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_CONF_REGISTRO_GRAL
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_CONF_REGISTRO_GRAL'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_CREDITO_CLIENTES
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_CREDITO_CLIENTES'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_DIRECCIONES_CLIENTE
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_DIRECCIONES_CLIENTE'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_PREVISION_DEMANDA
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_PREVISION_DEMANDA'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_PRODUCTOS
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_PRODUCTOS'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_PRODUCTOS_FAMILIAS
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_PRODUCTOS_FAMILIAS'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_RETURN_RCPT_HEADER
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_RETURN_RCPT_HEADER'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_RETURN_RCPT_LINE
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_RETURN_RCPT_LINE'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_SALES_CREDIT_NOTES
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_SALES_CREDIT_NOTES'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_SALES_CREDIT_NOTE_LINES
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_SALES_CREDIT_NOTE_LINES'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_SALES_HEADERS
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_SALES_HEADERS'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_SALES_INVOICE_HEADERS
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_SALES_INVOICE_HEADERS'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_SALES_INVOICE_LINES
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_SALES_INVOICE_LINES'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_SALES_LINES
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_SALES_LINES'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_SALES_PRICE
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_SALES_PRICE'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_SALES_SHIPMENT_HEADER
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_SALES_SHIPMENT_HEADER'
+        loaded_at_field: tec_ts_staging
+      - name: V_DL_SERIES
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_DL_SERIES'
+        loaded_at_field: tec_ts_staging
+      - name: V_ETL_PRESUPUESTO_DELISANO
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_DELISANO.V_ETL_PRESUPUESTO_DELISANO'
+        loaded_at_field: tec_ts_staging
+  - name: bronze_fricafor
+    database: "{{ 'PROD_BRONZE' if target.name == 'prod' else 'DEV_BRONZE' }}"
+    schema: BRONZE_FRICAFOR
+    quoting:
+      database: false
+      schema: false
+      identifier: true
+    tables:
+      - name: FRICAFOR_CAB_PARTIDA
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_CAB_PARTIDA'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_CURRENCY
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_CURRENCY'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_CUSTOMER
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_CUSTOMER'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_DESCRIPCIONES_VARIAS
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_DESCRIPCIONES_VARIAS'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_DESCRIPCIONES_VARIAS_FRI
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_DESCRIPCIONES_VARIAS_FRI'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_HISTORIAL_NO_PESADA
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_HISTORIAL_NO_PESADA'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_INFO_INDIVIDUO
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_INFO_INDIVIDUO'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_ITEM
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_ITEM'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_LIN_ORDEN_PROD_TRANSF_
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_LIN_ORDEN_PROD_TRANSF_'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_LIN_ORDEN_TRANSF_MATADERO
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_LIN_ORDEN_TRANSF_MATADERO'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_LIN_PARTIDA
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_LIN_PARTIDA'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_NO_PESADA
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_NO_PESADA'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_NO_SERIES
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_NO_SERIES'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_ORDEN_PRODUCCION_TRANSF_
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_ORDEN_PRODUCCION_TRANSF_'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_ORDEN_TRANSFORMACION_MATADERO
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_ORDEN_TRANSFORMACION_MATADERO'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_SALESPERSON_PURCHASER
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_SALESPERSON_PURCHASER'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_SALES_HEADER
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_SALES_HEADER'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_SALES_INVOICE_HEADER
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_SALES_INVOICE_HEADER'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_SALES_INVOICE_LINE
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_SALES_INVOICE_LINE'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_SALES_LINE
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_SALES_LINE'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_SALES_SHIPMENT_LINE
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_SALES_SHIPMENT_LINE'
+        loaded_at_field: tec_ts_staging
+      - name: FRICAFOR_SHIP_TO_ADDRESS
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.FRICAFOR_SHIP_TO_ADDRESS'
+        loaded_at_field: tec_ts_staging
+      - name: V_ETL_PRESUPUESTO_FRICAFOR
+        description: 'Tabla de ingesta de datos DEV_BRONZE.BRONZE_FRICAFOR.V_ETL_PRESUPUESTO_FRICAFOR'
+        loaded_at_field: tec_ts_staging
+
+  - name: bronze_comun
+    database: "{{ 'PROD_BRONZE' if target.name == 'prod' else 'DEV_BRONZE' }}"
+    schema: BRONZE_COMUN
+    quoting:
+      database: false
+      schema: false
+      identifier: true
+    tables:
+      - name: ISO_3166_COUNTRY_CODES
+        description: 'Seed de geografía y países para D_GEOGRAFICA y D_PAIS'
+      - name: CFG_LITERALES
+        description: 'Seed para carga de tablas extra'
+      - name: CFG_EQUIVALENCIAS
+        description: 'Seed equivalencias'
+      - name: CFG_ETL_PARAMS
+        description: 'Seed parametría'
+      - name: CA_POB
+        description: 'Seed poblaciones y comunidades autónomas'
+
+  - name: support_param
+    database: "{{ 'PROD_SUPPORT' if target.name == 'prod' else 'DEV_SUPPORT' }}"
+    schema: SUPPORT_PARAM
+    quoting:
+      database: false
+      schema: false
+      identifier: true
+    tables:
+      - name: INSERT_LOGS
+        description: 'Log de ingestas ADF para batches BRONZE'
+
+  - name: gold_comun
+    database: "{{ 'PROD_GOLD' if target.name == 'prod' else 'DEV_GOLD' }}"
+    schema: GOLD_COMUN
+    quoting:
+      database: false
+      schema: false
+      identifier: true
+    tables:
+      - name: D_CALENDARIO_M
+        description: 'Calendario mensual común'

@@ -1,0 +1,115 @@
+{{ config(database='PROD_BRONZE' if target.name == 'prod' else 'DEV_BRONZE', schema='BRONZE_FRICAFOR', materialized='view', tags=['bronze','batch','FRICAFOR']) }}
+
+{% set src_ref = source('bronze_fricafor', 'FRICAFOR_DESCRIPCIONES_VARIAS_FRI') %}
+{% set log_ref = source('support_param', 'INSERT_LOGS') %}
+
+with next_log as (
+    select tec_id_ingesta
+    from {{ log_ref }}
+    where upper(database)   = upper('{{ src_ref.database }}')
+      and upper(schema)     = upper('{{ src_ref.schema }}')
+      and upper(table_name) = upper('{{ src_ref.identifier }}')
+      and start_watermark <> end_watermark
+      and tec_ts_integracion_b is null
+    qualify row_number() over(order by tec_ts_ingesta) = 1
+),
+src as (
+    select
+        {{ std_cast('"TIMESTAMP"', 'INTEGER') }}                               as TIMESTAMP,
+        {{ std_cast('"IDTABLA"', 'INTEGER') }}                                 as IDTABLA,
+        {{ std_cast('"CODIGO"', 'VARCHAR') }}                                  as CODIGO,
+        {{ std_cast('"CODIGO_2"', 'VARCHAR') }}                                as CODIGO_2,
+        {{ std_cast('"CODIGO_3"', 'VARCHAR') }}                                as CODIGO_3,
+        {{ std_cast('"IDIOMA"', 'VARCHAR') }}                                  as IDIOMA,
+        {{ std_cast('"FECHA"', 'TIMESTAMP_NTZ') }}                             as FECHA,
+        {{ std_cast('"NO_LINEA"', 'INTEGER') }}                                as NO_LINEA,
+        {{ std_cast('"DESCRIPCION"', 'VARCHAR') }}                             as DESCRIPCION,
+        {{ std_cast('"COBERTURA"', 'NUMBER(38,5)') }}                          as COBERTURA,
+        {{ std_cast('"CREDITO"', 'NUMBER(38,5)') }}                            as CREDITO,
+        {{ std_cast('"GRUPO_RIESGO"', 'VARCHAR') }}                            as GRUPO_RIESGO,
+        {{ std_cast('"FECHA_REVISION"', 'TIMESTAMP_NTZ') }}                    as FECHA_REVISION,
+        {{ std_cast('"FECHA_FINAL"', 'TIMESTAMP_NTZ') }}                       as FECHA_FINAL,
+        {{ std_cast('"RIESGO_EMPRESA"', 'NUMBER(38,5)') }}                     as RIESGO_EMPRESA,
+        {{ std_cast('"MOTIVO_DENEGACION"', 'VARCHAR') }}                       as MOTIVO_DENEGACION,
+        {{ std_cast('"MOTIVO_SOLVENCIA"', 'VARCHAR') }}                        as MOTIVO_SOLVENCIA,
+        {{ std_cast('"PARTICULARIDAD_1"', 'VARCHAR') }}                        as PARTICULARIDAD_1,
+        {{ std_cast('"PARTICULARIDAD_2"', 'VARCHAR') }}                        as PARTICULARIDAD_2,
+        {{ std_cast('"PARTICULARIDAD_3"', 'VARCHAR') }}                        as PARTICULARIDAD_3,
+        {{ std_cast('"PARTICULARIDAD_4"', 'VARCHAR') }}                        as PARTICULARIDAD_4,
+        {{ std_cast('"PARTICULARIDAD_5"', 'VARCHAR') }}                        as PARTICULARIDAD_5,
+        {{ std_cast('"COLUMNA"', 'VARCHAR') }}                                 as COLUMNA,
+        {{ std_cast('"COLUMNA_2"', 'VARCHAR') }}                               as COLUMNA_2,
+        {{ std_cast('"COLUMNA_3"', 'VARCHAR') }}                               as COLUMNA_3,
+        {{ std_cast('"DECIMAL"', 'NUMBER(38,5)') }}                            as DECIMAL,
+        {{ std_cast('"DECIMAL_2"', 'NUMBER(38,5)') }}                          as DECIMAL_2,
+        {{ std_cast('"DECIMAL_3"', 'NUMBER(38,5)') }}                          as DECIMAL_3,
+        {{ std_cast('"FECHA_2"', 'TIMESTAMP_NTZ') }}                           as FECHA_2,
+        {{ std_cast('"FECHA_3"', 'TIMESTAMP_NTZ') }}                           as FECHA_3,
+        {{ std_cast('"BOOLEAN"', 'INTEGER') }}                                 as BOOLEAN,
+        {{ std_cast('"BOOLEAN_2"', 'INTEGER') }}                               as BOOLEAN_2,
+        {{ std_cast('"BOOLEAN_3"', 'INTEGER') }}                               as BOOLEAN_3,
+        {{ std_cast('"TEXTO"', 'VARCHAR') }}                                   as TEXTO,
+        {{ std_cast('"TEXTO_2"', 'VARCHAR') }}                                 as TEXTO_2,
+        {{ std_cast('"TEXTO_3"', 'VARCHAR') }}                                 as TEXTO_3,
+        {{ std_cast('"ENTERO"', 'INTEGER') }}                                  as ENTERO,
+        {{ std_cast('"ENTERO_2"', 'INTEGER') }}                                as ENTERO_2,
+        {{ std_cast('"ENTERO_3"', 'INTEGER') }}                                as ENTERO_3,
+        {{ std_cast('"NOMBRE"', 'VARCHAR') }}                                  as NOMBRE,
+        {{ std_cast('"NOMBRE_2"', 'VARCHAR') }}                                as NOMBRE_2,
+        {{ std_cast('"NOMBRE_3"', 'VARCHAR') }}                                as NOMBRE_3,
+        {{ std_cast('"ORIGEN"', 'INTEGER') }}                                  as ORIGEN,
+        {{ std_cast('"COLOR"', 'INTEGER') }}                                   as COLOR,
+        {{ std_cast('"CODIGO_4"', 'VARCHAR') }}                                as CODIGO_4,
+        {{ std_cast('"DATEFORMULA"', 'VARCHAR') }}                             as DATEFORMULA,
+        {{ std_cast('"DATEFORMULA_2"', 'VARCHAR') }}                           as DATEFORMULA_2,
+        {{ std_cast('"CODIGO_5"', 'VARCHAR') }}                                as CODIGO_5,
+        {{ std_cast('"DECIMAL_4"', 'NUMBER(38,5)') }}                          as DECIMAL_4,
+        {{ std_cast('"DATETIME"', 'TIMESTAMP_NTZ') }}                          as DATETIME,
+        {{ std_cast('"SEXO"', 'INTEGER') }}                                    as SEXO,
+        {{ std_cast('"BOOLEAN_4"', 'INTEGER') }}                               as BOOLEAN_4,
+        {{ std_cast('"SERIE"', 'VARCHAR') }}                                   as SERIE,
+        {{ std_cast('"NUMERO_INICIAL"', 'INTEGER') }}                          as NUMERO_INICIAL,
+        {{ std_cast('"NUMERO_FINAL"', 'INTEGER') }}                            as NUMERO_FINAL,
+        {{ std_cast('"IDENTIFICADOR_DOCUMENTO"', 'INTEGER') }}                 as IDENTIFICADOR_DOCUMENTO,
+        {{ std_cast('"DIGITO_CONTROL_IDEN_DOC_"', 'INTEGER') }}                as DIGITO_CONTROL_IDEN_DOC,
+        {{ std_cast('"NUMERACION_BLOQUEADA"', 'INTEGER') }}                    as NUMERACION_BLOQUEADA,
+        {{ std_cast('"ULTIMO_NUMERO_USADO"', 'INTEGER') }}                     as ULTIMO_NUMERO_USADO,
+        {{ std_cast('"NUMERO_DE_AVISO"', 'INTEGER') }}                         as NUMERO_DE_AVISO,
+        {{ std_cast('"IMPORTE"', 'NUMBER(38,5)') }}                            as IMPORTE,
+        {{ std_cast('"BANCO"', 'VARCHAR') }}                                   as BANCO,
+        {{ std_cast('"COBRO_PAGO"', 'INTEGER') }}                              as COBRO_PAGO,
+        {{ std_cast('"LIQUIDADO"', 'INTEGER') }}                               as LIQUIDADO,
+        {{ std_cast('"CODIGO_GASTO"', 'VARCHAR') }}                            as CODIGO_GASTO,
+        {{ std_cast('"FECHA_INICIAL_SII"', 'TIMESTAMP_NTZ') }}                 as FECHA_INICIAL_SII,
+        {{ std_cast('"FECHA_FINAL_SII"', 'TIMESTAMP_NTZ') }}                   as FECHA_FINAL_SII,
+        {{ std_cast('"RUTA_FICHERO"', 'VARCHAR') }}                            as RUTA_FICHERO,
+        {{ std_cast('"DATETIME_2"', 'TIMESTAMP_NTZ') }}                        as DATETIME_2,
+        {{ std_cast('"TIPO_CONTROL"', 'INTEGER') }}                            as TIPO_CONTROL,
+        {{ std_cast('"TIPO_DOCUMENTO"', 'INTEGER') }}                          as TIPO_DOCUMENTO,
+        {{ std_cast('"DURACION_SOLICITUD"', 'INTEGER') }}                      as DURACION_SOLICITUD,
+        {{ std_cast('"DURACION_RESPUESTA"', 'INTEGER') }}                      as DURACION_RESPUESTA,
+        {{ std_cast('"CODIGO_6"', 'VARCHAR') }}                                as CODIGO_6,
+        {{ std_cast('"CODIGO_7"', 'VARCHAR') }}                                as CODIGO_7,
+        {{ std_cast('"TEXTO_4"', 'VARCHAR') }}                                 as TEXTO_4,
+        {{ std_cast('"TEXTO_5"', 'VARCHAR') }}                                 as TEXTO_5,
+        {{ std_cast('"TEXTO_6"', 'VARCHAR') }}                                 as TEXTO_6,
+        {{ std_cast('"CODIGO_8"', 'VARCHAR') }}                                as CODIGO_8,
+        {{ std_cast('"TIPO_TRATAMIENTO"', 'INTEGER') }}                        as TIPO_TRATAMIENTO,
+        {{ std_cast('"CODIGO_9"', 'VARCHAR') }}                                as CODIGO_9,
+        {{ std_cast('"RESULTADO"', 'INTEGER') }}                               as RESULTADO,
+        {{ std_cast('"TEC_DES_EMPRESA"', 'VARCHAR') }}                         as TEC_DES_EMPRESA,
+        {{ std_cast('"TEC_ID_INGESTA"', 'VARCHAR') }}                          as TEC_ID_INGESTA,
+        {{ std_cast('"TEC_TS_INGESTA"', 'TIMESTAMP_NTZ') }}                    as TEC_TS_INGESTA,
+        {{ std_cast('"TEC_TS_STAGING"', 'TIMESTAMP_NTZ') }}                    as TEC_TS_STAGING,
+        {{ std_cast('"TEC_TS_INTEGRACION_B"', 'TIMESTAMP_NTZ') }}              as TEC_TS_INTEGRACION_B,
+        'FRI'                                                                     as tec_des_cod_siglas,
+        'FRICAFOR'                                                             as tec_des_empresa,
+        tec_id_ingesta,
+        tec_ts_ingesta,
+        tec_ts_staging,
+        tec_ts_integracion_b
+    from {{ src_ref }}
+    where tec_id_ingesta = (select tec_id_ingesta from next_log)
+)
+select *
+from src

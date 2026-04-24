@@ -1,0 +1,19 @@
+CBMF_DBT:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      role: DEV_ETL
+      warehouse: WH_SILVER_DEV
+      database: DEV_SUPPORT
+      schema: DBT
+      account: ' '
+      user: ' '
+    prod:
+      type: snowflake
+      role: PROD_ETL
+      warehouse: WH_SILVER_PROD
+      database: PROD_SUPPORT
+      schema: DBT
+      account: ' '
+      user: ' '

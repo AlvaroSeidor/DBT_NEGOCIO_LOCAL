@@ -1,0 +1,27 @@
+name: CBMF_DBT
+version: 1.0.0
+config-version: 2
+profile: CBMF_DBT
+model-paths:
+  - models
+analysis-paths:
+  - analyses
+test-paths:
+  - tests
+seed-paths:
+  - seeds
+macro-paths:
+  - macros
+snapshot-paths:
+  - snapshots
+models:
+  CBMF_DBT:
+    +materialized: view
+vars:
+  empresas: ['coopecarn', 'delisano', 'fricafor']
+  dbt_test_audit_database: "{{ 'PROD_SUPPORT' if target.name == 'prod' else 'DEV_SUPPORT' }}"
+  dbt_test_audit_schema: DBT
+on-run-start:
+  - "{{ audit__ensure_test_audit_objects() }}"
+on-run-end:
+  - "{{ audit__log_test_results(results) }}"
