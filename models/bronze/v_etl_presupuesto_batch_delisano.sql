@@ -64,11 +64,7 @@ src as (
         {{ std_cast('"TEC_TS_STAGING"', 'TIMESTAMP_NTZ') }}                    as TEC_TS_STAGING,
         {{ std_cast('"TEC_TS_INTEGRACION_B"', 'TIMESTAMP_NTZ') }}              as TEC_TS_INTEGRACION_B,
         'DLS'                                                                     as tec_des_cod_siglas,
-        'DELISANO'                                                             as tec_des_empresa,
-        tec_id_ingesta,
-        tec_ts_ingesta,
-        tec_ts_staging,
-        tec_ts_integracion_b
+        'DELISANO'                                                             as tec_des_empresa
     from {{ src_ref }}
     where tec_id_ingesta = (select tec_id_ingesta from next_log)
 )

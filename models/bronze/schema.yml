@@ -35,7 +35,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: clientes_batch_delisano
     description: "Batch pendiente más antiguo de CLIENTES (Delisano)."
@@ -45,7 +45,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: clientes_batch_fricafor
     description: "Batch pendiente más antiguo de CLIENTES (Fricafor)."
@@ -55,7 +55,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: conf_registro_gral_batch_delisano
     description: "Batch pendiente más antiguo de CONF_REGISTRO_GRAL (Delisano)."
@@ -133,7 +133,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: info_individuo_batch_fricafor
     description: "Batch pendiente más antiguo de INFO_INDIVIDUO (Fricafor)."
@@ -153,7 +153,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: item_batch_delisano
     description: "Batch pendiente más antiguo de ITEM (Delisano)."
@@ -163,7 +163,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: item_batch_fricafor
     description: "Batch pendiente más antiguo de ITEM (Fricafor)."
@@ -173,7 +173,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: item_category_batch_coopecarn
     description: "Batch pendiente más antiguo de ITEM_CATEGORY (Coopecarn)."
@@ -275,7 +275,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: orden_transformacion_matadero_batch_fricafor
     description: "Batch pendiente más antiguo de ORDEN_TRANSFORMACION_MATADERO (Fricafor)."
@@ -285,7 +285,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: presentation_batch_coopecarn
     description: "Batch pendiente más antiguo de PRESENTATION (Coopecarn)."
@@ -325,7 +325,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: return_rcpt_line_batch_delisano
     description: "Batch pendiente más antiguo de RETURN_RCPT_LINE (Delisano)."
@@ -349,7 +349,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: sales_header_batch_coopecarn
     description: "Batch pendiente más antiguo de SALES_HEADER (Coopecarn)."
@@ -359,7 +359,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: sales_header_batch_delisano
     description: "Batch pendiente más antiguo de SALES_HEADER (Delisano)."
@@ -369,7 +369,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: sales_header_batch_fricafor
     description: "Batch pendiente más antiguo de SALES_HEADER (Fricafor)."
@@ -379,7 +379,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: sales_invoice_header_batch_coopecarn
     description: "Batch pendiente más antiguo de SALES_INVOICE_HEADER (Coopecarn)."
@@ -389,7 +389,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: sales_invoice_header_batch_delisano
     description: "Batch pendiente más antiguo de SALES_INVOICE_HEADER (Delisano)."
@@ -399,7 +399,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: sales_invoice_header_batch_fricafor
     description: "Batch pendiente más antiguo de SALES_INVOICE_HEADER (Fricafor)."
@@ -409,7 +409,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: sales_invoice_line_batch_coopecarn
     description: "Batch pendiente más antiguo de SALES_INVOICE_LINE (Coopecarn)."
@@ -468,7 +468,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: sales_shipment_line_batch_coopecarn
     description: "Batch pendiente más antiguo de SALES_SHIPMENT_LINE (Coopecarn)."
@@ -543,7 +543,7 @@ models:
       - single_batch:
           column_name: tec_ts_ingesta
     columns:
-      - name: NO
+      - name: "NO"
         tests: [unique]
   - name: v_etl_presupuesto_batch_coopecarn
     description: "Batch pendiente más antiguo de V_ETL_PRESUPUESTO (Coopecarn)."
