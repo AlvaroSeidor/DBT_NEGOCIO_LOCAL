@@ -1,0 +1,762 @@
+version: 2
+models:
+  - name: attributes_batch
+    description: "Batch pendiente más antiguo de ATTRIBUTES (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: attributes_integ
+          pk_cols: ["CODE"]
+  - name: attributes_integ
+    description: "Tabla SCD2 integrada de ATTRIBUTES."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: cab_partida_batch
+    description: "Batch pendiente más antiguo de CAB_PARTIDA (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: cab_partida_integ
+          pk_cols: ["NO_PARTIDA"]
+  - name: cab_partida_integ
+    description: "Tabla SCD2 integrada de CAB_PARTIDA."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO_PARTIDA"]
+      - scd2_no_overlap:
+          pk_cols: ["NO_PARTIDA"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: clientes_batch
+    description: "Batch pendiente más antiguo de CLIENTES (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: clientes_integ
+          pk_cols: ["NO"]
+  - name: clientes_integ
+    description: "Tabla SCD2 integrada de CLIENTES."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO"]
+      - scd2_no_overlap:
+          pk_cols: ["NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: credito_clientes_batch
+    description: "Batch pendiente más antiguo de CREDITO_CLIENTES (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: credito_clientes_integ
+          pk_cols: ["CUSTOMER_NO"]
+  - name: credito_clientes_integ
+    description: "Tabla SCD2 integrada de CREDITO_CLIENTES."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["CUSTOMER_NO"]
+      - scd2_no_overlap:
+          pk_cols: ["CUSTOMER_NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: currency_batch
+    description: "Batch pendiente más antiguo de CURRENCY (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: currency_integ
+          pk_cols: ["CODE"]
+  - name: currency_integ
+    description: "Tabla SCD2 integrada de CURRENCY."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: customer_classification_batch
+    description: "Batch pendiente más antiguo de CUSTOMER_CLASSIFICATION (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: customer_classification_integ
+          pk_cols: ["CODE"]
+  - name: customer_classification_integ
+    description: "Tabla SCD2 integrada de CUSTOMER_CLASSIFICATION."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: historial_no_pesada_batch
+    description: "Batch pendiente más antiguo de HISTORIAL_NO_PESADA (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: historial_no_pesada_integ
+          pk_cols: ["ENTRY_NO"]
+  - name: historial_no_pesada_integ
+    description: "Tabla SCD2 integrada de HISTORIAL_NO_PESADA."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["ENTRY_NO"]
+      - scd2_no_overlap:
+          pk_cols: ["ENTRY_NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: incidence_quality_header_batch
+    description: "Batch pendiente más antiguo de INCIDENCE_QUALITY_HEADER (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: incidence_quality_header_integ
+          pk_cols: ["NO"]
+  - name: incidence_quality_header_integ
+    description: "Tabla SCD2 integrada de INCIDENCE_QUALITY_HEADER."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO"]
+      - scd2_no_overlap:
+          pk_cols: ["NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: info_individuo_batch
+    description: "Batch pendiente más antiguo de INFO_INDIVIDUO (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: info_individuo_integ
+          pk_cols: ["ID_INDIVIDUO"]
+  - name: info_individuo_integ
+    description: "Tabla SCD2 integrada de INFO_INDIVIDUO."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["ID_INDIVIDUO"]
+      - scd2_no_overlap:
+          pk_cols: ["ID_INDIVIDUO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: item_batch
+    description: "Batch pendiente más antiguo de ITEM (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: item_integ
+          pk_cols: ["NO"]
+  - name: item_integ
+    description: "Tabla SCD2 integrada de ITEM."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO"]
+      - scd2_no_overlap:
+          pk_cols: ["NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: item_category_batch
+    description: "Batch pendiente más antiguo de ITEM_CATEGORY (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: item_category_integ
+          pk_cols: ["CODE"]
+  - name: item_category_integ
+    description: "Tabla SCD2 integrada de ITEM_CATEGORY."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: item_classification_batch
+    description: "Batch pendiente más antiguo de ITEM_CLASSIFICATION (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: item_classification_integ
+          pk_cols: ["CODE"]
+  - name: item_classification_integ
+    description: "Tabla SCD2 integrada de ITEM_CLASSIFICATION."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: item_unit_of_measure_batch
+    description: "Batch pendiente más antiguo de ITEM_UNIT_OF_MEASURE (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: item_unit_of_measure_integ
+          pk_cols: ["ITEM_NO", "CODE"]
+  - name: item_unit_of_measure_integ
+    description: "Tabla SCD2 integrada de ITEM_UNIT_OF_MEASURE."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["ITEM_NO", "CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["ITEM_NO", "CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: item_variant_batch
+    description: "Batch pendiente más antiguo de ITEM_VARIANT (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: item_variant_integ
+          pk_cols: ["ITEM_NO", "CODE"]
+  - name: item_variant_integ
+    description: "Tabla SCD2 integrada de ITEM_VARIANT."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["ITEM_NO", "CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["ITEM_NO", "CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: lin_orden_prod_transf__batch
+    description: "Batch pendiente más antiguo de LIN_ORDEN_PROD_TRANSF_ (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: lin_orden_prod_transf__integ
+          pk_cols: ["PROD_ORDER_NO", "LINE_NO"]
+  - name: lin_orden_prod_transf__integ
+    description: "Tabla SCD2 integrada de LIN_ORDEN_PROD_TRANSF_."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["PROD_ORDER_NO", "LINE_NO"]
+      - scd2_no_overlap:
+          pk_cols: ["PROD_ORDER_NO", "LINE_NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: lin_orden_transf_matadero_batch
+    description: "Batch pendiente más antiguo de LIN_ORDEN_TRANSF_MATADERO (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: lin_orden_transf_matadero_integ
+          pk_cols: ["PROD_ORDER_NO", "LINE_NO"]
+  - name: lin_orden_transf_matadero_integ
+    description: "Tabla SCD2 integrada de LIN_ORDEN_TRANSF_MATADERO."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["PROD_ORDER_NO", "LINE_NO"]
+      - scd2_no_overlap:
+          pk_cols: ["PROD_ORDER_NO", "LINE_NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: lin_partida_batch
+    description: "Batch pendiente más antiguo de LIN_PARTIDA (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: lin_partida_integ
+          pk_cols: ["NO_PARTIDA", "NO_LINEA"]
+  - name: lin_partida_integ
+    description: "Tabla SCD2 integrada de LIN_PARTIDA."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO_PARTIDA", "NO_LINEA"]
+      - scd2_no_overlap:
+          pk_cols: ["NO_PARTIDA", "NO_LINEA"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: no_pesada_batch
+    description: "Batch pendiente más antiguo de NO_PESADA (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: no_pesada_integ
+          pk_cols: ["NO_PESADA"]
+  - name: no_pesada_integ
+    description: "Tabla SCD2 integrada de NO_PESADA."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO_PESADA"]
+      - scd2_no_overlap:
+          pk_cols: ["NO_PESADA"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: no_series_batch
+    description: "Batch pendiente más antiguo de NO_SERIES (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: no_series_integ
+          pk_cols: ["CODE"]
+  - name: no_series_integ
+    description: "Tabla SCD2 integrada de NO_SERIES."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: orden_produccion_transf__batch
+    description: "Batch pendiente más antiguo de ORDEN_PRODUCCION_TRANSF_ (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: orden_produccion_transf__integ
+          pk_cols: ["NO"]
+  - name: orden_produccion_transf__integ
+    description: "Tabla SCD2 integrada de ORDEN_PRODUCCION_TRANSF_."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO"]
+      - scd2_no_overlap:
+          pk_cols: ["NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: orden_transformacion_matadero_batch
+    description: "Batch pendiente más antiguo de ORDEN_TRANSFORMACION_MATADERO (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: orden_transformacion_matadero_integ
+          pk_cols: ["NO"]
+  - name: orden_transformacion_matadero_integ
+    description: "Tabla SCD2 integrada de ORDEN_TRANSFORMACION_MATADERO."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO"]
+      - scd2_no_overlap:
+          pk_cols: ["NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: presentation_batch
+    description: "Batch pendiente más antiguo de PRESENTATION (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: presentation_integ
+          pk_cols: ["CODE"]
+  - name: presentation_integ
+    description: "Tabla SCD2 integrada de PRESENTATION."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: prevision_demanda_batch
+    description: "Batch pendiente más antiguo de PREVISION_DEMANDA (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: prevision_demanda_integ
+          pk_cols: ["ENTRY_NO"]
+  - name: prevision_demanda_integ
+    description: "Tabla SCD2 integrada de PREVISION_DEMANDA."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["ENTRY_NO"]
+      - scd2_no_overlap:
+          pk_cols: ["ENTRY_NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: quality_action_type_batch
+    description: "Batch pendiente más antiguo de QUALITY_ACTION_TYPE (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: quality_action_type_integ
+          pk_cols: ["CODE"]
+  - name: quality_action_type_integ
+    description: "Tabla SCD2 integrada de QUALITY_ACTION_TYPE."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: return_rcpt_header_batch
+    description: "Batch pendiente más antiguo de RETURN_RCPT_HEADER (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: return_rcpt_header_integ
+          pk_cols: ["NO"]
+  - name: return_rcpt_header_integ
+    description: "Tabla SCD2 integrada de RETURN_RCPT_HEADER."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO"]
+      - scd2_no_overlap:
+          pk_cols: ["NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: return_rcpt_line_batch
+    description: "Batch pendiente más antiguo de RETURN_RCPT_LINE (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: return_rcpt_line_integ
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+  - name: return_rcpt_line_integ
+    description: "Tabla SCD2 integrada de RETURN_RCPT_LINE."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+      - scd2_no_overlap:
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: sales_credit_note_lines_batch
+    description: "Batch pendiente más antiguo de SALES_CREDIT_NOTE_LINES (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: sales_credit_note_lines_integ
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+  - name: sales_credit_note_lines_integ
+    description: "Tabla SCD2 integrada de SALES_CREDIT_NOTE_LINES."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+      - scd2_no_overlap:
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: sales_credit_notes_batch
+    description: "Batch pendiente más antiguo de SALES_CREDIT_NOTES (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: sales_credit_notes_integ
+          pk_cols: ["NO"]
+  - name: sales_credit_notes_integ
+    description: "Tabla SCD2 integrada de SALES_CREDIT_NOTES."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO"]
+      - scd2_no_overlap:
+          pk_cols: ["NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: sales_header_batch
+    description: "Batch pendiente más antiguo de SALES_HEADER (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: sales_header_integ
+          pk_cols: ["NO"]
+  - name: sales_header_integ
+    description: "Tabla SCD2 integrada de SALES_HEADER."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO"]
+      - scd2_no_overlap:
+          pk_cols: ["NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: sales_invoice_header_batch
+    description: "Batch pendiente más antiguo de SALES_INVOICE_HEADER (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: sales_invoice_header_integ
+          pk_cols: ["NO"]
+  - name: sales_invoice_header_integ
+    description: "Tabla SCD2 integrada de SALES_INVOICE_HEADER."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO"]
+      - scd2_no_overlap:
+          pk_cols: ["NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: sales_invoice_line_batch
+    description: "Batch pendiente más antiguo de SALES_INVOICE_LINE (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: sales_invoice_line_integ
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+  - name: sales_invoice_line_integ
+    description: "Tabla SCD2 integrada de SALES_INVOICE_LINE."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+      - scd2_no_overlap:
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: sales_line_batch
+    description: "Batch pendiente más antiguo de SALES_LINE (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: sales_line_integ
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+  - name: sales_line_integ
+    description: "Tabla SCD2 integrada de SALES_LINE."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+      - scd2_no_overlap:
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: sales_shipment_header_batch
+    description: "Batch pendiente más antiguo de SALES_SHIPMENT_HEADER (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: sales_shipment_header_integ
+          pk_cols: ["NO"]
+  - name: sales_shipment_header_integ
+    description: "Tabla SCD2 integrada de SALES_SHIPMENT_HEADER."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO"]
+      - scd2_no_overlap:
+          pk_cols: ["NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: sales_shipment_line_batch
+    description: "Batch pendiente más antiguo de SALES_SHIPMENT_LINE (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: sales_shipment_line_integ
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+  - name: sales_shipment_line_integ
+    description: "Tabla SCD2 integrada de SALES_SHIPMENT_LINE."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+      - scd2_no_overlap:
+          pk_cols: ["DOCUMENT_NO", "LINE_NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: salesperson_purchaser_batch
+    description: "Batch pendiente más antiguo de SALESPERSON_PURCHASER (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: salesperson_purchaser_integ
+          pk_cols: ["CODE"]
+  - name: salesperson_purchaser_integ
+    description: "Tabla SCD2 integrada de SALESPERSON_PURCHASER."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: ship_to_address_batch
+    description: "Batch pendiente más antiguo de SHIP_TO_ADDRESS (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: ship_to_address_integ
+          pk_cols: ["CUSTOMER_NO", "CODE"]
+  - name: ship_to_address_integ
+    description: "Tabla SCD2 integrada de SHIP_TO_ADDRESS."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["CUSTOMER_NO", "CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["CUSTOMER_NO", "CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: shipping_agent_batch
+    description: "Batch pendiente más antiguo de SHIPPING_AGENT (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: shipping_agent_integ
+          pk_cols: ["CODE"]
+  - name: shipping_agent_integ
+    description: "Tabla SCD2 integrada de SHIPPING_AGENT."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["CODE"]
+      - scd2_no_overlap:
+          pk_cols: ["CODE"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
+  - name: tariff_number_batch
+    description: "Batch pendiente más antiguo de TARIFF_NUMBER (todas las empresas)."
+    tests:
+      - no_stale_batch_vs_integ:
+          integ_ref: tariff_number_integ
+          pk_cols: ["NO"]
+  - name: tariff_number_integ
+    description: "Tabla SCD2 integrada de TARIFF_NUMBER."
+    tests:
+      - scd2_single_current:
+          pk_cols: ["NO"]
+      - scd2_no_overlap:
+          pk_cols: ["NO"]
+      - no_nulls_except:
+          exclude: []
+    columns:
+      - name: tec_cod_vigencia
+        tests:
+          - accepted_values:
+              values: [0, 1]
