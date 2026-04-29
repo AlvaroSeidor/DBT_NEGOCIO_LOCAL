@@ -15,20 +15,24 @@ with next_log as (
 ),
 src as (
     select
-        {{ std_cast('"TIMESTAMP"', 'INTEGER') }}                               as TIMESTAMP,
         {{ std_cast('"CODE"', 'VARCHAR') }}                                    as CODE,
         {{ std_cast('"DESCRIPTION"', 'VARCHAR') }}                             as DESCRIPTION,
         {{ std_cast('"DEFAULT_NOS_"', 'INTEGER') }}                            as DEFAULT_NOS,
         {{ std_cast('"MANUAL_NOS_"', 'INTEGER') }}                             as MANUAL_NOS,
         {{ std_cast('"DATE_ORDER"', 'INTEGER') }}                              as DATE_ORDER,
-        {{ std_cast('"SII_RECTIFICATIVE_INVOICE"', 'INTEGER') }}               as SII_RECTIFICATIVE_INVOICE,
-        {{ std_cast('"SII_SPECIAL_TYPE"', 'INTEGER') }}                        as SII_SPECIAL_TYPE,
-        {{ std_cast('"GS1"', 'INTEGER') }}                                     as GS1,
+        NULL                                                                   as ML_BAJAR_SGI,
+        NULL                                                                   as ML_BLOQUEA_ALBARANES,
+        NULL                                                                   as SERIE_ORMA,
+        NULL                                                                   as SERIE_SGI,
         {{ std_cast('"TEC_DES_EMPRESA"', 'VARCHAR') }}                         as TEC_DES_EMPRESA,
         {{ std_cast('"TEC_ID_INGESTA"', 'VARCHAR') }}                          as TEC_ID_INGESTA,
         {{ std_cast('"TEC_TS_INGESTA"', 'TIMESTAMP_NTZ') }}                    as TEC_TS_INGESTA,
         {{ std_cast('"TEC_TS_STAGING"', 'TIMESTAMP_NTZ') }}                    as TEC_TS_STAGING,
         {{ std_cast('"TEC_TS_INTEGRACION_B"', 'TIMESTAMP_NTZ') }}              as TEC_TS_INTEGRACION_B,
+        {{ std_cast('"TIMESTAMP"', 'INTEGER') }}                               as TIMESTAMP,
+        {{ std_cast('"SII_RECTIFICATIVE_INVOICE"', 'INTEGER') }}               as SII_RECTIFICATIVE_INVOICE,
+        {{ std_cast('"SII_SPECIAL_TYPE"', 'INTEGER') }}                        as SII_SPECIAL_TYPE,
+        {{ std_cast('"GS1"', 'INTEGER') }}                                     as GS1,
         'FRI'                                                                     as tec_des_cod_siglas
     from {{ src_ref }}
     where tec_id_ingesta = (select tec_id_ingesta from next_log)

@@ -29,6 +29,10 @@ src as (
         {{ std_cast('"TEC_TS_INGESTA"', 'TIMESTAMP_NTZ') }}                    as TEC_TS_INGESTA,
         {{ std_cast('"TEC_TS_STAGING"', 'TIMESTAMP_NTZ') }}                    as TEC_TS_STAGING,
         {{ std_cast('"TEC_TS_INTEGRACION_B"', 'TIMESTAMP_NTZ') }}              as TEC_TS_INTEGRACION_B,
+        NULL                                                                   as TIMESTAMP,
+        NULL                                                                   as SII_RECTIFICATIVE_INVOICE,
+        NULL                                                                   as SII_SPECIAL_TYPE,
+        NULL                                                                   as GS1,
         'DLS'                                                                     as tec_des_cod_siglas
     from {{ src_ref }}
     where tec_id_ingesta = (select tec_id_ingesta from next_log)

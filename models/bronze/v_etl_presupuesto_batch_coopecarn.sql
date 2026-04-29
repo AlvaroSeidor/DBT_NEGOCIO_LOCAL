@@ -63,6 +63,7 @@ src as (
         {{ std_cast('"TEC_TS_INGESTA"', 'TIMESTAMP_NTZ') }}                    as TEC_TS_INGESTA,
         {{ std_cast('"TEC_TS_STAGING"', 'TIMESTAMP_NTZ') }}                    as TEC_TS_STAGING,
         {{ std_cast('"TEC_TS_INTEGRACION_B"', 'TIMESTAMP_NTZ') }}              as TEC_TS_INTEGRACION_B,
+        NULL                                                                   as FILE_NAME,
         'COO'                                                                     as tec_des_cod_siglas,
         'COOPECARN'                                                            as tec_des_empresa
     from {{ src_ref }}

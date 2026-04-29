@@ -44,6 +44,22 @@ src as (
         {{ std_cast('"TEC_TS_INGESTA"', 'TIMESTAMP_NTZ') }}                    as TEC_TS_INGESTA,
         {{ std_cast('"TEC_TS_STAGING"', 'TIMESTAMP_NTZ') }}                    as TEC_TS_STAGING,
         {{ std_cast('"TEC_TS_INTEGRACION_B"', 'TIMESTAMP_NTZ') }}              as TEC_TS_INTEGRACION_B,
+        NULL                                                                   as PRIVACY_BLOCKED,
+        NULL                                                                   as LOCATION_CODE,
+        NULL                                                                   as NOMBRE_2,
+        NULL                                                                   as ALIAS,
+        NULL                                                                   as DIRECCION,
+        NULL                                                                   as DIRECCION_2,
+        NULL                                                                   as CODIGO_POSTAL,
+        NULL                                                                   as POBLACION,
+        NULL                                                                   as PROVINCIA,
+        NULL                                                                   as PAIS,
+        NULL                                                                   as TELEFONO_2,
+        NULL                                                                   as COD_IDIOMA,
+        NULL                                                                   as CIF_NIF,
+        NULL                                                                   as COMMISSION_GROUP_CODE,
+        NULL                                                                   as PAY_TO_VENDOR_NO,
+        NULL                                                                   as COMMISSION_ACCOUNT,
         'COO'                                                                     as tec_des_cod_siglas
     from {{ src_ref }}
     where tec_id_ingesta = (select tec_id_ingesta from next_log)
